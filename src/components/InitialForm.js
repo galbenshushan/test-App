@@ -1,6 +1,5 @@
-import { Button } from '@mui/material';
 import React, { useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setItemToLocalStorage } from '../helpers/localStorage';
 import { examineeActions } from '../store/examineeSlice';
 import DynamicButton from '../UI/DynamicButton';
@@ -18,8 +17,8 @@ const InitialForm = ({ enterTest }) => {
     const toUpper = (x) => x.charAt(0).toUpperCase() + x.slice(1).toLowerCase().trim();
 
     const getNameFromRef = () => {
-        const tempUser= nameRef.current.value.trim()
-        if (tempUser !== '' && tempUser.match("^[a-zA-Z_]*$") ) {
+        const tempUser = nameRef.current.value.trim()
+        if (tempUser !== '' && tempUser.match("^[a-zA-Z_]*$")) {
             const username = toUpper(tempUser)
             enterTest(1)
             setItemToLocalStorage('examinee', username)
@@ -27,11 +26,8 @@ const InitialForm = ({ enterTest }) => {
         } else setErr('Please enter a valid name!')
     }
 
-    const keysEvents = (e) => {
-        if(e.key === 'Enter'){
-            getNameFromRef()
-        }
-    }
+    const keysEvents = (e) => e.key === 'Enter' && getNameFromRef()
+
     return (
         <div tabIndex='0' onKeyDown={keysEvents} className=''>
             <h1>Welcome to the Test</h1>
