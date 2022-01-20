@@ -18,7 +18,7 @@ const InitialForm = ({ enterTest }) => {
 
     const getNameFromRef = () => {
         const tempUser = nameRef.current.value.trim()
-        if (tempUser !== '' && tempUser.match("^[a-zA-Z_]*$")) {
+        if (tempUser !== '' && tempUser.match("^[a-zA-Z _]*$")) {
             const username = toUpper(tempUser)
             enterTest(1)
             setItemToLocalStorage('examinee', username)

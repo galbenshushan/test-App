@@ -9,7 +9,7 @@ const QuesTwo = ({ examinee, addToAnswers, indx }) => {
 
     const question = 'complete the sentence';
 
-    const correct = 'to be'
+    const correct = 'not to be'
 
     const inputRef = useRef('')
 
