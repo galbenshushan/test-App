@@ -18,8 +18,9 @@ const InitialForm = ({ enterTest }) => {
     const toUpper = (x) => x.charAt(0).toUpperCase() + x.slice(1).toLowerCase().trim();
 
     const getNameFromRef = () => {
-        if (nameRef.current.value !== '' && nameRef.current.value.match("^[a-zA-Z ]*$")) {
-            const username = toUpper(nameRef.current.value)
+        const tempUser= nameRef.current.value.trim()
+        if (tempUser !== '' && tempUser.match("^[a-zA-Z_]*$") ) {
+            const username = toUpper(tempUser)
             enterTest(1)
             setItemToLocalStorage('examinee', username)
             dispatch(examineeActions.setExamineeNameHandler(username))
